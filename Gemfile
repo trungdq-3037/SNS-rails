@@ -46,3 +46,13 @@ group :development do
   # gem "spring"
 end
 
+
+
+
+gem "byebug" 
+
+group :development, :production do
+  gem 'pg'
+end
+
+gem 'faker', '~> 3.2', '>= 3.2.1'
