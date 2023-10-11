@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get '/' , to: 'hello_world#index'
+  # get '/' , to:  "hello_world#index"
 
-  # namespace :admin do
-  #   resources :articles, :comments
-  # end
+  namespace :api do
+    namespace :v1 do  
+      get '/' , to:  "hello_world#index"
+      post "/register", to: "user#create"
+    end
+
+  end
 end
