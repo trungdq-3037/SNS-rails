@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do  
       get '/' , to:  "hello_world#index"
       post "/register", to: "user#create"
+      post "/login", to: "authentication#create"
     end
 
   end
