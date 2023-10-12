@@ -12,7 +12,14 @@ Rails.application.routes.draw do
       post "/register", to: "user#create"
       post "/login", to: "authentication#create"
 
-      resources :post
+      resources :post , only: [:update, :destroy , :create, :index, :create ]
+      resources :comment , only: [:update, :destroy , :create]
+      
+      scope :like do
+        post "/:post_id" , to: "like#create"
+        delete "/:post_id" , to: "like#destroy"
+      end
+
     end
   end
 end
