@@ -1,5 +1,5 @@
 class Api::V1::UserController < ApplicationController
-
+    skip_before_action :authenticated
     def create
         @user = User.create(user_create_params)
         if @user.save()

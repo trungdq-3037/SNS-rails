@@ -2,7 +2,9 @@
 # include JsonWebToken
 
 class Api::V1::AuthenticationController < ApplicationController
+    skip_before_action :authenticated
     SECRET_KEY= ENV['SECRET_KEY']
+
     def create
         @user = User.find_by(email: login_params[:email])
         if @user.present? and @user.authenticate(login_params[:password])
@@ -15,7 +17,7 @@ class Api::V1::AuthenticationController < ApplicationController
         else
             return render json: {
                 success: false,
-                message: 'Authentication failed',
+                message: 'Invalid username or password',
             }
         end
 

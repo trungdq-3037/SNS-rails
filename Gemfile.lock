@@ -92,6 +92,9 @@ GEM
     irb (1.8.1)
       rdoc
       reline (>= 0.3.8)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     jwt (2.7.0)
     loofah (2.21.4)
       crass (~> 1.0.2)
@@ -183,6 +186,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   faker (~> 3.2, >= 3.2.1)
+  jbuilder
   jwt
   pg
   puma (~> 5.0)

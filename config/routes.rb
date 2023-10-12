@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       get '/' , to:  "hello_world#index"
       post "/register", to: "user#create"
       post "/login", to: "authentication#create"
-    end
 
+      resources :post
+    end
   end
 end
