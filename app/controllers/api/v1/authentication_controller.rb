@@ -18,7 +18,7 @@ class Api::V1::AuthenticationController < ApplicationController
             return render json: {
                 success: false,
                 message: 'Invalid username or password',
-            }
+            } , status: :bad_request
         end
 
     end

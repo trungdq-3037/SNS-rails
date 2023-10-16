@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
       resources :post , only: [:update, :destroy , :create, :index, :create ]
       resources :comment , only: [:update, :destroy , :create]
-      
       scope :like do
         post "/:post_id" , to: "like#create"
         delete "/:post_id" , to: "like#destroy"

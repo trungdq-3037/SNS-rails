@@ -2,7 +2,7 @@ class Api::V1::PostController < ApplicationController
     before_action :set_post , only: [ :update, :show, :destroy]
     before_action :own_post , only: [ :update, :destroy]
     def index
-        @posts = Post.all()
+        @posts = Post.all().includes(:comments,:user)
         return render :index
     end
 
