@@ -29,3 +29,5 @@ Layout/EmptyLineAfterGuardClause:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+Lint/Syntax:
+  Enabled: false

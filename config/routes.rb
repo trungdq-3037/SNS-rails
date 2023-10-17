@@ -7,18 +7,18 @@ Rails.application.routes.draw do
   # get '/' , to:  "hello_world#index"
 
   namespace :api do
-    namespace :v1 do  
-      get '/' , to:  "hello_world#index"
-      post "/register", to: "user#create"
-      post "/login", to: "authentication#create"
+    namespace :v1 do
+      get '/', to: 'hello_world#index'
+      post '/register', to: 'user#create'
+      post '/login', to: 'authentication#create'
+      get '/user/current', to: 'user#show'
 
-      resources :post , only: [:update, :destroy , :create, :index, :create ]
-      resources :comment , only: [:update, :destroy , :create]
+      resources :post, only: [:update, :destroy, :create, :index]
+      resources :comment, only: [:update, :destroy, :create]
       scope :like do
-        post "/:post_id" , to: "like#create"
-        delete "/:post_id" , to: "like#destroy"
+        post '/:post_id', to: 'like#create'
+        delete '/:post_id', to: 'like#destroy'
       end
-
     end
   end
 end
