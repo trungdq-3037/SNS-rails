@@ -1,11 +1,12 @@
 class Api::V1::PostController < ApplicationController
   before_action :set_post, only: [:update, :show, :destroy]
   before_action :own_post, only: [:update, :destroy]
+
   def index
     @posts = Post.eager_load(:user, comments: :user).all.order(created_at: :desc)
     @count_comments = Comment.select('post_id, COUNT(*) as count').group(:post_id)
     @count_likes = Like.select('post_id, COUNT(*) as count').group(:post_id)
-    @current_user_liked= Like.all().where(user_id: @current_user.id)
+    @current_user_liked = Like.all.where(user_id: @current_user.id)
     @posts.each do |post|
       post.set_count_comment(0)
       post.set_count_like(0)
@@ -21,13 +22,6 @@ class Api::V1::PostController < ApplicationController
       end
     end
     render :index
-
-    # solutions
-    # @posts = Post.includes(:user, comments: :user)
-    #           .joins("LEFT JOIN (SELECT post_id, COUNT(*) AS count FROM comments GROUP BY post_id) AS comment_counts ON comment_counts.post_id = posts.id")
-    #           .select('posts.*, COALESCE(comment_counts.count, 0) AS comment_count')
-    #           .order(created_at: :desc)
-    # render :index
   end
 
   def show

@@ -10,25 +10,8 @@ class Api::V1::CommentController < ApplicationController
       render json: {
         success: false,
         message: 'Cant create comment'
-      },status:  :bad_request
+      }, status:  :bad_request
     end
-    # if Comment.create(create_params) # wil return a object so it always go to true block
-    # to fix  add ! -> Comment.create!(create_params)
-    #     render :create
-    # else
-    #     render json: {
-    #         success: false,
-    #         message: exception
-    #     }
-    # end
-    # begin
-    #     Comment.create!(create_params)
-    # rescue => exception
-    #     render json: {
-    #         success: false,
-    #         message: exception
-    #     }
-    # end
   end
 
   def update
