@@ -20,9 +20,26 @@ class Api::V1::UserController < ApplicationController
     end
   end
 
+  def update
+    @current_user = User.update(user_update_params)
+    render json: {
+      success: true,
+      data: @current_user
+    }
+  rescue StandardError => e
+    render json: {
+      success: false,
+      message: e.errors.full_messages
+    }, status: :bad_request
+  end
+
   private
 
   def user_create_params
+    params.permit(:email, :password, :password_confirmation, :username)
+  end
+
+  def user_update_params
     params.permit(:email, :password, :password_confirmation, :username)
   end
 end

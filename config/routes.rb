@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post '/register', to: 'user#create'
       post '/login', to: 'authentication#create'
       get '/user/current', to: 'user#show'
+      put '/user', to: 'user#update'
 
       resources :post, only: [:update, :destroy, :create, :index]
       resources :comment, only: [:update, :destroy, :create]
